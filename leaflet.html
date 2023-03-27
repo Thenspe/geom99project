@@ -17,13 +17,17 @@
         crossorigin=""></script>
         <style>
             html,body {height: 100%; margin: 0}
-            #map {height: 500px; }
+            #basicmap {height: 250px; }
+            #layerMap {height: 250px; }
+            #overlayMap {height: 250px; }
         </style>
 </head>
 <body>
-    <div id="map"></div>
+    <div id="basicmap"><h1>Basic Map</h1></div>
+    <div id="layerMap"><h1>Layer Control Map</h1></div>
+    <div id="overlayMap"><h1>Image Overlay Map</h1></div>
     <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
+        var map = L.map('basicmap').setView([51.505, -0.09], 13);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             // the attribution tag is obligatory for OSM as per copyright notice
