@@ -23,9 +23,12 @@
         </style>
 </head>
 <body>
-    <div id="basicmap"><h1>Basic Map</h1></div>
-    <div id="layerMap"><h1>Layer Control Map</h1></div>
-    <div id="overlayMap"><h1>Image Overlay Map</h1></div>
+    <h2>Basic Map</h2>
+    <div id="basicmap"></div>
+    <h2>Layer Control Map</h2>
+    <div id="layerMap"></div>
+    <h2>Image Overlay Map</h2>
+    <div id="overlayMap"></div>
     <script>
         var map1 = L.map('basicmap').setView([51.505, -0.09], 13);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -119,7 +122,7 @@
         var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map2);
         //note: you can pass just base by excluding the second arguement, or just overlays by passing null as the first arguement
 
-        
+
 
     </script>
 </body>
