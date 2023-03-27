@@ -30,6 +30,7 @@
     <h2>Image Overlay Map</h2>
     <div id="overlayMap"></div>
     <script>
+/*
         var map1 = L.map('basicmap').setView([51.505, -0.09], 13);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -71,7 +72,7 @@
             alert("You clicked the map at " + e.latlng);
         }
         map1.on('click', onMapClick); */
-
+/*
         var popup = L.popup();
 
         function onMapClick(e) {
@@ -82,7 +83,7 @@
         }
 
         map.on('click', onMapClick);
-
+*/
         //layer control map
 
         //markers to include
@@ -121,7 +122,6 @@
         //add layer control to the map. First arguement is the base layers, second is overlay
         var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map2);
         //note: you can pass just base by excluding the second arguement, or just overlays by passing null as the first arguement
-
 
 
     </script>
