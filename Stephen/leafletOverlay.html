@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- testing area for leaflet. Primary code based on the leaflet tutorial found here:
+    https://leafletjs.com/examples/quick-start/
+    https://leafletjs.com/examples/layers-control/
+    https://leafletjs.com/examples/overlays/
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Leaflet Testing</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
+        <style>
+            html,body {height: 100%; margin: 0}
+            #map {height: 500px; }
+        </style>
+</head>
+<body>
+    <h2>Image Overlays</h2>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([37.8, -96], 4);
+
+        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var imageUrl = 'https://maps.lib.utexas.edu/maps/historical/newark_nj_1922.jpg';
+        var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+        var altText = 'Image of Newark, N.J. in 1922. Source: The University of Texas at Austin, UT Libraries Map Collection.';
+        var latLngBounds = L.latLngBounds([[40.799311, -74.118464], [40.68202047785919, -74.33]]);
+
+       var imageOverlay = L.imageOverlay(imageUrl, latLngBounds, {
+            opacity: 0.9,
+            errorOverlayUrl: errorOverlayUrl,
+            alt: altText,
+            interactive: true
+        }).addTo(map);
+        /*
+        - opacity defines the opacity of the image overlay, it equals to 1.0 by default. Decrease this value to
+            make an image overlay transparent and to expose the underlying map layer.
+        - errorOverlayUrl is a URL to the overlay image to show in place of the overlay that failed to load.
+        - alt sets the HTML alt attribute to provide an alternative text description of the image. Alternative text is
+            essential information for screen reader users. It can also benefit people during poor network connectivity,
+            in the case the image fails to load. Moreover, it can improve the SEO of a website.
+        - interactive is false by default. If true, the image overlay will emit mouse events when clicked or hovered.
+        */
+
+       // L.rectangle(latLngBounds).addTo(map);
+        map.fitBounds(latLngBounds);
+    </script>
+</body>
+</html>
