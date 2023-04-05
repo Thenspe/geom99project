@@ -14,9 +14,8 @@
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
         crossorigin="">
     </script>
+    <!-- add air photo database GeoJSON file-->
     <script src="../AirphotoDatabase.json"></script>
-    <!-- add ajax, to work with geojson 
-    <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>-->
     <style>
         html,body {height: 100%; margin: 0}
         #map {height: 100%; }
@@ -25,7 +24,7 @@
 <body>
     <div id="map"></div>
     <script>
-        const map = L.map('map').setView([44.30443, -78.30450], 16);
+        const map = L.map('map').setView([45.000, -78.304], 8);
 
         // add OSM basemap
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -34,12 +33,14 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        //var marker = L.marker([44.30443, -78.30450]).addTo(map);
-
-        
         // add air photo database geojson
-       var airphotos = L.geoJSON(photos).addTo(map);
+        var airphotos = L.geoJSON(photos, {
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<p>Photo ID: '+feature.properties.PHOTO_ID+'</p>')
+            }
+        }).addTo(map);
 
+       //airphotos.bindPopup("This should pop up on all air photos.");
     </script>
 </body>
 </html>
