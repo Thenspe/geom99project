@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- 
+    Exploration of Leaflet capabilities
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Leaflet Testing</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin="">
+    </script>
+    <!-- add ajax, to work with geojson 
+    <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>-->
+    <style>
+        html,body {height: 90%; margin: 0}
+        #map {height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+        const map = L.map('map').setView([44.30443, -78.30450], 16);
+
+        // add OSM basemap
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            // the attribution tag is obligatory for OSM as per copyright notice
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // add air photo database geojson
+       var geojsonFeature = {
+        "type": "Feature",
+        "properties": {
+            "name":"Cambium",
+            "county":"Peterborough",
+            "date":"2023-04-05"
+        },
+        "geometry": {
+            "type": "Linestring",
+            "coordinates":[[44.30443, -78.30450],[44.30463, -78.30450],[44.30443, -78.30470]]
+        }
+       };
+        var testStyle = {
+        "color": "#ff7800",
+        "weight": 5
+        }
+        L.geoJSON(geojsonFeature,{style:testStyle}).addTo(map);
+    </script>
+</body>
+</html>
