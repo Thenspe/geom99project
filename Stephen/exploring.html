@@ -17,15 +17,15 @@
     <!-- add ajax, to work with geojson 
     <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>-->
     <style>
-        html,body {height: 90%; margin: 0}
-        #map {height: 100%; }
+        html,body {height: 100%; margin: 0}
+        #map {height: 500px; }
     </style>
 </head>
 <body>
     <div id="map"></div>
     <script>
 
-        const map = L.map('map').setView([44.30443, -78.30450], 16);
+        var map = L.map('map').setView([44.30443, -78.30450], 16);
 
         // add OSM basemap
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -52,6 +52,14 @@
         "weight": 5
         }
         L.geoJSON(geojsonFeature,{style:testStyle}).addTo(map);
+
+        //add a circle to see if adding is working
+        var circle = L.circle([44.304, -78.304], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map1);
     </script>
 </body>
 </html>
