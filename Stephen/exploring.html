@@ -6,19 +6,28 @@
 <head>
     <meta charset="utf-8">
     <title>Leaflet Testing</title>
+    <!-- leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
         crossorigin=""/>
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <!-- geocoding stylesheet -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"
+    />
+    <!-- leaflet javascript library -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
         crossorigin="">
     </script>
+    <!-- geocoder javascript -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js">
+    </script>
     <!-- add air photo database GeoJSON file-->
-    <script src="../AirphotoDatabase.json"></script>
+    <script src="../AirphotoDatabase.json">
+    </script>
     <style>
         html,body {height: 100%; margin: 0}
-        #map {height: 100%; }
+        #map {height: 800px; }
     </style>
 </head>
 <body>
@@ -40,7 +49,8 @@
             }
         }).addTo(map);
 
-       //airphotos.bindPopup("This should pop up on all air photos.");
+        // add geosearch control
+        L.Control.geocoder().addTo(map);
     </script>
 </body>
 </html>
