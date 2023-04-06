@@ -59,9 +59,11 @@
             collapsed: false,
             position: 'topright',
             defaultMarkGeocode: false
-        }).on('markgeocode', function(hmmmm) {
-            const coords = [hmmmm.geocode.center.lat, hmmmm.geocode.center.lng];
-            var searchMarker = L.marker(coords).addTo(map);
+        }).on('markgeocode', function(result) {
+            const coords = [result.geocode.center.lat, result.geocode.center.lng];
+            var searchMarker = L.marker(coords, {
+                draggable: true //create draggable marker
+            }).addTo(map);
             map.setView(coords,17);
         })
         .addTo(map);
