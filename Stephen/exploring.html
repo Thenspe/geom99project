@@ -33,14 +33,41 @@
 <body>
     <div id="map"></div>
     <script>
-        const map = L.map('map').setView([45.000, -78.304], 8);
-
-        // add OSM basemap
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Add map baselayers
+        const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            // the attribution tag is obligatory for OSM as per copyright notice
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+        });
+        const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        });
+        //Map declaration
+        const map = L.map('map', {
+            center: [45.000, -78.304],
+            zoom: 8,
+            layers: [osm, Esri_WorldImagery]            
+        });
+        // Add baselayer info as array for layer control, control added lower to put it
+        // below the search bar
+        const baseLayers = {
+            'OpenStreetMap': osm,
+            'Esri World Imagery': Esri_WorldImagery
+        };
+
+        // add geosearch control
+        var geocoder = L.Control.geocoder({
+            collapsed: false,
+            position: 'topright',
+            defaultMarkGeocode: false
+        }).on('markgeocode', function(hmmmm) {
+            const coords = [hmmmm.geocode.center.lat, hmmmm.geocode.center.lng];
+            var searchMarker = L.marker(coords).addTo(map);
+            map.setView(coords,17);
+        })
+        .addTo(map);
+
+        //Add layer control button to switch between imagery and openstreetmap
+        const layerControl = L.control.layers(baseLayers).addTo(map);
 
         // add air photo database geojson
         var airphotos = L.geoJSON(photos, {
@@ -48,21 +75,6 @@
                 info.bindPopup('<p>Photo ID: '+feature.properties.PHOTO_ID+'</p>')
             }
         }).addTo(map);
-
-        // add geosearch control
-        var geocoder = L.Control.geocoder({
-            defaultMarkGeocode: false
-        }).on('markgeocode', function(e) {
-            var bbox = e.geocode.bbox;
-            var poly = L.polygon([
-            bbox.getSouthEast(),
-            bbox.getNorthEast(),
-            bbox.getNorthWest(),
-            bbox.getSouthWest()
-            ]).addTo(map);
-            map.fitBounds(poly.getBounds());
-        })
-        .addTo(map);
     </script>
 </body>
 </html>
