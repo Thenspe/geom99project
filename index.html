@@ -8,7 +8,7 @@ contributors. That may change as time goes on, not really a big deal.
 <html>
     <head>
         <meta charset="utf-8">
-        <title>KES Group - GEOM99 Final Project</title>
+        <title>SEK Group - GEOM99 Final Project</title>
         <!-- Leaflet-required CSS and JS -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
@@ -26,8 +26,45 @@ contributors. That may change as time goes on, not really a big deal.
         <link rel="stylesheet" href="stylesMain.css"/>
     </head>
     <body>
-        <img src="images/SEKgroup.png" alt="KES Logo">
-        <div id="map"></div>
-        <script type="text/javacsript" src="COGmap.js"></script>
+        <header>
+            <img id="logo" src="images/SEKgroup.png" alt="SEK Logo">
+            <nav>
+                <a href="index.html">home</a>
+                <a href="COGmap.html">map</a>
+                <a href="about.html">about</a>
+            </nav>
+        </header>
+        <main>
+            <section id="problem">
+                <h1>Problem Statement</h1>
+                <p>Explore the Cloud Optimized GeoTiff (COG) format, and how it works within AGOL or similar for photo access.</p>
+                <h2>What is Cloud Optimized GeoTIFF?</h2>
+                <p>Cloud Optimized GeoTIFF (or COG) is an image format optimized for use in the web.
+                    It is a modified form of GeoTIFF, which is just a Georeferenced TIFF, which
+                    stands for Tagged Image Format. Regular images on the web load vertically,
+                    line-by-line, and in their entirety. COG are able to load in tiles, small squares
+                    at a time, and can stop loading when they exit the viewing area. This should allow for 
+                    faster loading and much less bandwidth consumption. Additionally, they can store
+                    multiple versions of an image at different zoom levels called 'overviews', which
+                    can also cause the image to load faster. This is because the overivew can be sent
+                    to the browser instead of the entire image, which would then have to be rendered
+                    in place to represent any pixels that can't be individually loaded.
+                </p>
+                <h2>What is AGOL?</h2>
+                <p>AGOL, or ArcGIS Online, is a mapping solution created by Esri. It was originally
+                    considered for this project for its known capabilities and convenience, however
+                    it eventually set aside due to budgetary constraints.
+                </p>
+                <h2>What is Leaflet?</h2>
+                <p>Leaflet is a lightweight, open-source javascript mapping library. It is fast, easy
+                    to use and learn, and very capable. It is also free-to-use and open source, with
+                    a lot of community support and 3rd-party extensions that can be used. After reviewing
+                    several options, it was selected as the web mapping library of choice for our project.
+                </p>
+            </section>
+        </main>
+        <footer>
+            <p>copyright SEK Group 2022</p>
+        </footer>
     </body>
 </html>
