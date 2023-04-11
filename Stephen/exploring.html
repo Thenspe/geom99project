@@ -22,8 +22,17 @@
     <!-- geocoder javascript -->
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js">
     </script>
+
+    <!-- geoTIFF -->
+    <script src="https://unpkg.com/geotiff@0.4.1/dist/main.js"></script>
+    <script src="https://unpkg.com/plotty@0.2.0/src/plotty.js"></script>
+    <script src="leaflet-geotiff.js"></script>
+    <!-- renderer -->
+    <script src="leaflet-geotiff-plotty.js"></script>
+    <script src="leaflet-geotiff-vector.js"></script>
+    
     <!-- add air photo database GeoJSON file-->
-    <script src="../AirphotoDatabase.json">
+    <script src="AerialOutlines.geojson">
     </script>
     <style>
         html,body {height: 100%; margin: 0}
@@ -43,8 +52,8 @@
         });
         //Map declaration
         const map = L.map('map', {
-            center: [45.000, -78.304],
-            zoom: 8,
+            center: [44.340, -78.741], //45.000, -78.304 for ontario
+            zoom: 12,
             layers: [osm, Esri_WorldImagery]            
         });
         // Add baselayer info as array for layer control, control added lower to put it
@@ -71,7 +80,15 @@
         //Add layer control button to switch between imagery and openstreetmap
         const layerControl = L.control.layers(baseLayers).addTo(map);
 
-        // add air photo database geojson
+        // geoTIFF
+        /*
+        var GeoRasterLayer = require("georaster-layer-for-leaflet");
+        var parse_georaster = require("georaster");
+        var photo1 = 'images/A16868-154.tif';
+
+        photo1.addTo(map);
+        */
+
         var airphotos = L.geoJSON(photos, {
             onEachFeature: function (feature, info) {
                 info.bindPopup('<p>Photo ID: '+feature.properties.PHOTO_ID+'</p>')

@@ -22,6 +22,9 @@
     <!-- geocoder javascript -->
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js">
     </script>
+    <!-- geoTIFF -->
+    <script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js">
+    </script>
     <!-- add air photo database GeoJSON file-->
     <script src="AirphotoDatabase.json">
     </script>
@@ -39,6 +42,9 @@
     </header>
     <main id="map">
     </main>
+    <footer>
+        <p>copyright SEK Group 2022</p>
+    </footer>
     <script>
         // Add map baselayers
         const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -79,6 +85,7 @@
         const layerControl = L.control.layers(baseLayers).addTo(map);
 
         // add air photo database geojson
+        
         var airphotos = L.geoJSON(photos, {
             onEachFeature: function (feature, info) {
                 info.bindPopup('<p>Photo ID: '+feature.properties.PHOTO_ID+'</p>')

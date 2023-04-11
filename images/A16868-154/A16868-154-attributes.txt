@@ -1,0 +1,30 @@
+Photo ID,A16868-154.tif
+Year Captured,1959
+Date Captured,10/21/1959
+Roll,A16868
+Flightline,41E
+Photo number,154.0
+MaDGIC Holdings Box number,35
+Photo Height,9.0
+Photo Width,9.0
+NTS Map Number,031D07
+NTS Map Name,LINDSAY
+Geographic Area,
+Angle,0.0
+Season Code,2
+Altitude,14550.0
+Scale,30000.0
+Camera,RC8 333
+Lens,15 AG 73
+Focal Length (mm),152.46
+Focal Length (in),6.0
+Frames,178
+Film Colour Code,0
+Film Size,9.5
+Film Type,PLUS X
+Centroid Y,44.34
+Centroid X,-78.7
+X Min,-78.74
+Y Min,44.32
+X Max,-78.65
+Y Max,44.37
