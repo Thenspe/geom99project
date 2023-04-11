@@ -24,12 +24,8 @@
     </script>
 
     <!-- geoTIFF -->
-    <script src="https://unpkg.com/geotiff@0.4.1/dist/main.js"></script>
-    <script src="https://unpkg.com/plotty@0.2.0/src/plotty.js"></script>
-    <script src="leaflet-geotiff.js"></script>
-    <!-- renderer -->
-    <script src="leaflet-geotiff-plotty.js"></script>
-    <script src="leaflet-geotiff-vector.js"></script>
+    <script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js">
+    </script>
     
     <!-- add air photo database GeoJSON file-->
     <script src="AerialOutlines.geojson">
@@ -79,21 +75,36 @@
 
         //Add layer control button to switch between imagery and openstreetmap
         const layerControl = L.control.layers(baseLayers).addTo(map);
+/*
+        var airphotos = L.geoJSON(photos, {
+            style: {color: 'yellow'},
+            onEachFeature: function (feature, info) {
+                info.bindPopup('<p>Photo ID: '+feature.properties.PhotoID+'</p>')
+            }
+        }).addTo(map);
+*/
+        var imageURL = 'D:/FlemSem2/GEOM99/FinalProject/geom99project/images/A16868-154/A16868-154.jpg';
+        var imageErrorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+        var altText = 'alternative text'
+        var imageBounds = L.latLngBouds([[44.385133, -78.745641],[44.385515, -78.659546]]);
+
+        var imageOnMyMap = L.imageOverlay(imageURL, imageBounds, {
+                opacity: 0.9,
+                errorOverlayUrl: errorOverlayUrl,
+                alt: altText
+            }).addTo(map);
+
 
         // geoTIFF
         /*
         var GeoRasterLayer = require("georaster-layer-for-leaflet");
-        var parse_georaster = require("georaster");
-        var photo1 = 'images/A16868-154.tif';
-
-        photo1.addTo(map);
-        */
-
-        var airphotos = L.geoJSON(photos, {
-            onEachFeature: function (feature, info) {
-                info.bindPopup('<p>Photo ID: '+feature.properties.PHOTO_ID+'</p>')
-            }
-        }).addTo(map);
+        var parse_georaster = require("georaster"); 
+        var photo1 = 'D:/FlemSem2/GEOM99/FinalProject/geom99project/images/A16868-154/A16868-154.tif';
+        
+        var photo1overlay = L.imageOverlay(photo1, {
+            opcaity: 1,
+            alt: "alt text"
+        }) */
     </script>
 </body>
 </html>
