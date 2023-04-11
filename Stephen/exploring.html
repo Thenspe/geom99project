@@ -75,25 +75,22 @@
 
         //Add layer control button to switch between imagery and openstreetmap
         const layerControl = L.control.layers(baseLayers).addTo(map);
-/*
+
         var airphotos = L.geoJSON(photos, {
             style: {color: 'yellow'},
             onEachFeature: function (feature, info) {
                 info.bindPopup('<p>Photo ID: '+feature.properties.PhotoID+'</p>')
             }
         }).addTo(map);
-*/
-        var imageURL = 'D:/FlemSem2/GEOM99/FinalProject/geom99project/images/A16868-154/A16868-154.jpg';
+
+        var imageURL = 'https://thenspe.github.io/geom99project/images/A16868-154/A16868-154.jpg';
         var imageErrorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
         var altText = 'alternative text'
-        var imageBounds = L.latLngBouds([[44.385133, -78.745641],[44.385515, -78.659546]]);
+        var imageBounds = L.latLngBounds([[44.385133704289053, -78.745641039671753], [44.325644754986556, -78.659455982686808]]);
 
-        var imageOnMyMap = L.imageOverlay(imageURL, imageBounds, {
-                opacity: 0.9,
-                errorOverlayUrl: errorOverlayUrl,
-                alt: altText
-            }).addTo(map);
-
+        L.imageOverlay(imageURL,imageBounds).addTo(map);  
+       
+        
 
         // geoTIFF
         /*
