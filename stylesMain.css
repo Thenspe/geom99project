@@ -52,11 +52,10 @@ main {
 figure {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 figcaption {
     font-style: italic;
-    text-align: center
 }
 footer {
     display: flex;
