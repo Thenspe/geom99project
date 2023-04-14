@@ -49,6 +49,15 @@ main {
     margin-left: 1vw;
     margin-right: 1vw;
 }
+figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+figcaption {
+    font-style: italic;
+    text-align: center
+}
 footer {
     display: flex;
     justify-content: center;
