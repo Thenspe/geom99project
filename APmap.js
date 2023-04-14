@@ -36,11 +36,9 @@ var geocoder = L.Control.geocoder({
 //Add layer control button to switch between imagery and openstreetmap
 const layerControl = L.control.layers(baseLayers).addTo(map);
 
-/*
 // add air photo database geojson
 var airphotos = L.geoJSON(photos, {
     onEachFeature: function (feature, info) {
         info.bindPopup('<p>Photo ID: '+feature.properties.PHOTO_ID+'</p>')
     }
 }).addTo(map);
-*/
