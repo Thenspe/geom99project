@@ -25,6 +25,10 @@ header {
     align-items: center;
     width: 100%;
     font-size: 1em;
+    position: fixed;
+    background-color: white;
+    height: 7.5vh;
+
 }
 nav {
     display: flex;
@@ -47,6 +51,7 @@ nav a:hover {
 main {
     display: flex;
     flex-direction: column;
+    margin-top: 7.5vh;
     margin-left: 1vw;
     margin-right: 1vw;
     margin-bottom: 30px;
@@ -84,7 +89,7 @@ h2 {
 }
 
 #logo {
-    max-height: 5vw;
+    height: 7.5vh;
 }
 #map {height: 600px; }
 #S {
