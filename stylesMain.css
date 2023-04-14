@@ -60,7 +60,7 @@ figcaption {
 footer {
     display: flex;
     justify-content: center;
-    margin-top: auto;
+    margin-top: .5;
     position: static;
     bottom: 0;
     background-color:#1B8F3D;
