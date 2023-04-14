@@ -48,6 +48,7 @@ main {
     flex-direction: column;
     margin-left: 1vw;
     margin-right: 1vw;
+    margin-bottom: 30px;
 }
 figure {
     display: flex;
@@ -61,7 +62,8 @@ figcaption {
 footer {
     display: flex;
     justify-content: center;
-    margin-top: .5;
+    margin-top: auto;
+    padding: 3px;
     position: static;
     bottom: 0;
     background-color:#1B8F3D;

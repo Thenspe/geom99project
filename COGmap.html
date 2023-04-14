@@ -23,8 +23,16 @@
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js">
     </script>
     <!-- geoTIFF -->
-<!--    <script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js">
-    </script> -->
+
+    <!--deps-->
+    <script src="https://unpkg.com/geotiff@1.0.0-beta.7/dist/geotiff.bundle.js"></script>
+    <script src="https://unpkg.com/plotty@0.4.4/dist/plotty.min.js"></script>
+
+    <!--the plugin-->
+    <script src="../dist/leaflet-geotiff.js"></script>
+    <script src="../dist/leaflet-geotiff-plotty.js"></script>
+    <script src="../dist/leaflet-geotiff-vector-arrows.js"></script>
+
     <!-- add air photo database GeoJSON file-->
     <script src="AirphotoDatabase.json">
     </script>
@@ -94,7 +102,7 @@
             }
         }).addTo(map);
 */
-        var image1URL = 'images/A16868-154/A1686-154.jpg';
+        var image1URL = 'images/2021 Porcupine.JPG';
         var imageErrorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
         var altText = 'alternative text';
         var image1Bounds = L.latLngBounds([[44.385133704289053, -78.745641039671753], [44.325644754986556, -78.659455982686808]]);
@@ -103,6 +111,29 @@
             errorOverlayURL: imageErrorOverlayUrl,
             alt: altText
         }).addTo(map);  
+
+        const cog1url = "images/A18773-025_COG.TIF";
+        const options = {
+            renderer: L.LeafletGeotiff.rgb,
+            useWorker: false,
+            bounds: [],
+            band: 0,
+            image: 0,
+            clip: undefined,
+            pane: "overlayPane",
+            onError: null,
+            sourceFunction: GeoTIFF.fromUrl,
+            arrayBuffer: null,
+            noDataValue: undefined,
+            noDataKey: undefined,
+            // The block size to use for buffer
+            blockSize: 65536,
+            // Optional, override default opacity of 1 on the image added to the map
+            opacity: 1,
+            // Optional, hide imagery while map is moving (may prevent 'flickering' in some browsers)
+            clearBeforeMove: false,
+        };
+        const cog1layer = L.leafletGeotiff(cog1url, options).addTo(map);
     </script>
 </body>
 </html>
