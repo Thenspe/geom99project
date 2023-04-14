@@ -8,8 +8,8 @@ const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/re
 });
 //Map declaration
 const map = L.map('map', {
-    center: [45.000, -78.304],
-    zoom: 8,
+    center: [44.340, -78.741], //45.000, -78.304 for ontario
+    zoom: 12,
     layers: [osm, Esri_WorldImagery]            
 });
 // Add baselayer info as array for layer control, control added lower to put it
