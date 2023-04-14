@@ -57,8 +57,8 @@
         });
         //Map declaration
         const map = L.map('map', {
-            center: [44.500, -78.304],
-            zoom: 8,
+            center: [44.340, -78.741], //45.000, -78.304 for ontario
+            zoom: 12,
             layers: [osm, Esri_WorldImagery]            
         });
         // Add baselayer info as array for layer control, control added lower to put it
@@ -86,13 +86,13 @@
         const layerControl = L.control.layers(baseLayers).addTo(map);
 
         // add air photo database geojson
-        
+/*        
         var airphotos = L.geoJSON(photos, {
             onEachFeature: function (feature, info) {
                 info.bindPopup('<p>Photo ID: '+feature.properties.PHOTO_ID+'</p>')
             }
         }).addTo(map);
-        
+*/
         var image1URL = '/images/A16868-154/A1686-154.png';
         var imageErrorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
         var altText = 'alternative text'
