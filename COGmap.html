@@ -51,9 +51,6 @@
     </header>
     <main id="map">
     </main>
-    <footer>
-        <p>copyright SEK Group 2022</p>
-    </footer>
     <script>
         // Add map baselayers
         const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -134,5 +131,8 @@
         };
         const cog1layer = L.leafletGeotiff(cog1url, options).addTo(map);
     </script>
+    <footer>
+        <p>copyright SEK Group 2022</p>
+    </footer>
 </body>
 </html>
