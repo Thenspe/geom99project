@@ -99,7 +99,10 @@
         var altText = 'alternative text'
         var image1Bounds = L.latLngBounds([[44.385133704289053, -78.745641039671753], [44.325644754986556, -78.659455982686808]]);
 
-        L.imageOverlay(image1URL,image1Bounds).addTo(map);  
+        var image1overlay = L.imageOverlay(image1URL,image1Bounds, {
+            errorOverlayURL: imageErrorOverlayUrl,
+            alt: altText
+        }).addTo(map);  
     </script>
 </body>
 </html>
