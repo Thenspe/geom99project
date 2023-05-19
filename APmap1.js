@@ -7,6 +7,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', 'https://server.ar
     ext: 'png'
 }).addTo(map);
 
+var data = ['AirphotoDatabase.json']
+
 var jsonFeatures = [];
                     
 data.forEach(function(point){
